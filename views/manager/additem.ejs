@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <title>Add Item</title>
+    <link id="StyleSheetID" rel="stylesheet" href="/Main1.css">
+    <script defer src="/additem_script.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <img src="/pom_honey_logo.png" id="pom_logo">
+        <a href="menu"><div id="nav_storeOrders">Menu</div></a>
+        <script>
+            function StyleChange(){
+              var link = document.getElementById("StyleSheetID"); 
+              PageStyle = localStorage.getItem('CurrentStyle');
+              if(PageStyle == 'Main1'){
+                  link.setAttribute('href', '/Main1.css')
+              }
+              else if(PageStyle == 'Main2'){
+                  link.setAttribute('href', '/Main2.css')
+              }
+              else if (PageStyle == null){
+                  link.setAttribute('href', '/Main1.css')
+                  localStorage.setItem('CurrentStyle', 'Main1');
+              }
+          }
+          StyleChange();
+          </script>
+          <script>
+            function button2(){
+              var link = document.getElementById("StyleSheetID"); 
+              if(link.getAttribute("href") == "/Main1.css"){
+                link.setAttribute("href", "/Main2.css"); 
+                localStorage.setItem('CurrentStyle', 'Main2');
+              } 
+              else if(link.getAttribute("href") == "/Main2.css"){
+                link.setAttribute("href", "/Main1.css"); 
+                localStorage.setItem('CurrentStyle', 'Main1');
+              }
+          }
+        </script>   
+          <a><button class="button_nav" onclick="button2()">Style Change</button></a>
+    </div>
+    
+    <div id="form_wrapper">
+        <div id="error"></div>
+        <form action="additem" method="post" id="additem_form">
+            <label for="itemname">Item Name</label>
+            <input id="itemname" type="text" name="itemname" required/>
+            <label for="itemprice">Item Price</label>
+            <input id="itemprice" type="text" name="itemprice" required/>
+            <label for="ingredientids">Ingredient IDs</label>
+            <input id="ingredientids" type="text" name="ingredientids" required/>
+            <input type="submit" value="Add Item" id="submit_button"/>
+        </form>
+    </div>
+
+    <div class ="translate" id="google_translate_element"></div>
+ 
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+ 
+    <script type="text/javascript"
+            src=
+"https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
+    </script>
+
+</body>
